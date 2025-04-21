@@ -7,10 +7,10 @@
         "principal": true
     },
     {
-        "nome": "",
-        "imagem": "https://via.placeholder.com/400x200.png?text=RPA+Selenium",
-        "descricao": "Automação web utilizando Python e Selenium para baixar relatórios automaticamente.",
-        "link": "https://github.com/seuusuario/rpa-selenium",
+        "nome": "Password Generator",
+        "imagem": "Imgs/PassGenerator.png",
+        "descricao": "Um simples gerador de senhas com uma interface gráfica",
+        "link": "https://github.com/Vitorugz/PasswordGenerator",
         "principal": false
     }
 ]
