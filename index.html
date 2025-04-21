@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfólio | Vitor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 dark:bg-gray-900 text-black dark:text-white min-h-screen transition-colors duration-300">
+    <!-- Header -->
+    <header class="bg-white dark:bg-gray-800 shadow p-6 sticky top-0 z-50 transition-colors duration-300">
+        <div class="max-w-5xl mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Vitor • Back-end Dev</h1>
+            <nav class="space-x-4">
+                <a href="#projetos" class="text-blue-600 dark:text-blue-400 font-semibold hover:underline">Projetos</a>
+                <a href="#sobre" class="text-blue-600 dark:text-blue-400 font-semibold hover:underline">Sobre</a>
+                <a href="#contato" class="text-blue-600 dark:text-blue-400 font-semibold hover:underline">Contato</a>
+                <button onclick="alternarTema()"
+                    class="px-4 py-2 bg-gray-300 dark:bg-gray-700 text-black dark:text-white rounded-xl transition-colors">
+                    🌗 Dark Mode
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="text-center py-16 bg-gradient-to-br from-blue-600 to-blue-800 text-white">
+        <h2 class="text-4xl font-extrabold mb-4">Olá! Eu sou o Vitor 👋</h2>
+        <p class="text-xl">Desenvolvedor Back-end focado em Python, APIs e automações.</p>
+        <p class="mt-4 text-sm">Sempre em busca de novos desafios e aprendizados!</p>
+    </section>
+
+    <!-- Projetos -->
+    <div id="projetos"
+        class="max-w-6xl mx-auto p-6 bg-white dark:bg-gray-800 text-black dark:text-white transition-colors duration-300">
+        <h2 class="text-3xl font-bold mb-4">Meus Projetos</h2>
+        <h3 class="text-xl font-semibold mb-4">Principais Projetos</h3>
+        <div id="principais-projetos" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-6"></div>
+
+        <div class="text-center">
+            <a href="projetos.html"
+                class="inline-block px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl shadow hover:bg-blue-700 transition">
+                Ver todos os projetos
+            </a>
+        </div>
+    </div>
+
+    <!-- Sobre Mim -->
+    <section id="sobre"
+        class="py-16 px-4 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 transition-colors">
+        <div class="max-w-3xl mx-auto text-center">
+            <h3 class="text-3xl font-bold mb-6">👨‍💻 Sobre Mim</h3>
+            <p class="text-gray-700 dark:text-gray-300 text-lg">
+                Sou desenvolvedor back-end com foco em Python. Tenho experiência com criação de APIs, automações,
+                integração com serviços da AWS e bancos de dados relacionais. Gosto de resolver problemas, aprender
+                coisas novas e trabalhar em equipe. Estou sempre em busca de desafios que me façam crescer.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato" class="py-16 px-4 bg-gray-900 dark:bg-gray-950 text-white">
+        <div class="max-w-3xl mx-auto text-center">
+            <h3 class="text-3xl font-bold mb-6">📬 Contato</h3>
+            <p class="mb-4">Vamos conversar? Me chama no LinkedIn ou dá uma olhada no meu GitHub!</p>
+            <div class="flex justify-center gap-6">
+                <a href="https://github.com/Vitorugz" target="_blank" class="hover:underline text-blue-400">GitHub</a>
+                <a href="https://linkedin.com/in/vitordelimacosta" target="_blank"
+                    class="hover:underline text-blue-400">LinkedIn</a>
+                <a href="mailto:vitorugz019@gmail.com" class="hover:underline text-blue-400">Email</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center text-sm py-6 bg-gray-800 dark:bg-gray-950 text-gray-400">
+        © 2025 Vitor • Desenvolvido com 💻 e ☕
+    </footer>
+
+    <!-- Script de Projetos -->
+    <script>
+        async function carregarPrincipaisProjetos() {
+            const resposta = await fetch('projetos.json');
+            const projetos = await resposta.json();
+            const principais = projetos.filter(p => p.principal);
+
+            const container = document.getElementById('principais-projetos');
+
+            principais.forEach(proj => {
+                const card = document.createElement('a');
+                card.href = proj.link;
+                card.target = "_blank";
+                card.className = "bg-white dark:bg-gray-700 text-black dark:text-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition block";
+                card.innerHTML = `
+          <img src="${proj.imagem}" alt="Projeto ${proj.nome}" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h4 class="text-lg font-bold mb-2">${proj.nome}</h4>
+            <p class="text-sm text-gray-700 dark:text-gray-300">${proj.descricao}</p>
+          </div>
+        `;
+                container.appendChild(card);
+            });
+        }
+
+        function alternarTema() {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('tema', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        }
+
+        // Verifica tema salvo
+        if (localStorage.getItem('tema') === 'dark') {
+            document.documentElement.classList.add('dark');
+        }
+
+        carregarPrincipaisProjetos();
+    </script>
+</body>
+
+</html>

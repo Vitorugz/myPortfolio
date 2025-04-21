@@ -1,0 +1,16 @@
+[
+    {
+        "nome": "IR2PC",
+        "imagem": "Imgs/IR2PC_img.jpg",
+        "descricao": "IR2PC é um projeto em Python que transforma um controle remoto infravermelho (IR) de TV em um controlador para seu computador.",
+        "link": "https://github.com/Vitorugz/IR2PC",
+        "principal": true
+    },
+    {
+        "nome": "",
+        "imagem": "https://via.placeholder.com/400x200.png?text=RPA+Selenium",
+        "descricao": "Automação web utilizando Python e Selenium para baixar relatórios automaticamente.",
+        "link": "https://github.com/seuusuario/rpa-selenium",
+        "principal": false
+    }
+]
