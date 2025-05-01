@@ -12,5 +12,12 @@
         "descricao": "Um simples gerador de senhas com uma interface gráfica",
         "link": "https://github.com/Vitorugz/PasswordGenerator",
         "principal": false
+    },
+    {
+        "nome": "Task Manager API",
+        "imagem": "Imgs/TaskManagerAPI.png",
+        "descricao": "Uma API Python + Flask para gerenciamento de tarefas com autenticação de usuário e senha.",
+        "link": "https://github.com/Vitorugz/personal_tasks_api",
+        "principal": true
     }
 ]
